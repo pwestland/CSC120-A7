@@ -6,13 +6,15 @@ public class House extends Building {
   
   private ArrayList<String> residents;
   private boolean hasDiningHall;
+  private boolean hasElevator;
 
   /* creates the house */
 
-  public House(String name, String address, int nFloors, boolean hasDiningHall) {
+  public House(String name, String address, int nFloors, boolean hasDiningHall, boolean hasElevator) {
     super(name, address, nFloors);
     this.residents = new ArrayList<>();
     this.hasDiningHall = hasDiningHall;
+    this.hasElevator = hasElevator;
     
     System.out.println("You have built a house: 🏠");
   }
@@ -58,7 +60,7 @@ public class House extends Building {
   }
 
   public static void main(String[] args) {
-    House lawrence = new House("Lawrence House", "99 Green St", 4, false);
+    House lawrence = new House("Lawrence House", "99 Green St", 4, false, false);
     lawrence.moveIn("Pippa");
     lawrence.moveIn("Pippa");
     lawrence.moveIn("Pippa W.");
@@ -67,6 +69,7 @@ public class House extends Building {
     lawrence.moveOut("Jarrah");
     System.out.println(lawrence.hasDiningHall());
     System.out.println(lawrence.nResidents());
+    System.out.println(lawrence.hasElevator());
   }
 
 }
