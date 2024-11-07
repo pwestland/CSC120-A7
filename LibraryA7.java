@@ -5,15 +5,22 @@ import java.util.Hashtable;
 public class Library extends Building{
 
   private Hashtable<String, Boolean> collection;
+  private boolean hasElevator;
 
     /* creates the library */
 
-    public Library(String name, String address, int nFloors) {
+    public Library(String name, String address, int nFloors, boolean hasElevator) {
       super(name, address, nFloors);
       this.collection = new Hashtable<>();
+      this.hasElevator = hasElevator;
 
       System.out.println("You have built a library: 📖");
     }
+    
+    public boolean hasElevator(){
+      return hasElevator;
+    }
+
 
     /* adds a book to the collection, as long as it's not already there */
 
@@ -86,8 +93,23 @@ public class Library extends Building{
       System.out.println("This library's collection: ");
     }
 
+    public void goToFloor(int floorNum){
+      if(this.hasElevator() == true){
+        super.goToFloor(floorNum);
+      }
+      else{
+        if(this.activeFloor == -1){
+          throw new RuntimeException("You cannot go to this floor from outside the building.");
+        }
+        if(floorNum < 1 || floorNum > this.nFloors){
+          throw new RuntimeException("That floor does not exist, choose a number within the building's range.");
+        }
+        throw new RuntimeException("This building does not have an elevator, you must use the stairs.");
+      }
+    }
+
     public static void main(String[] args) {
-      Library Neilson = new Library("Neilson", "7 Neilson Dr", 5);
+      Library Neilson = new Library("Neilson", "7 Neilson Dr", 5, true);
     }
   
   }
