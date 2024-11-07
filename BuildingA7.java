@@ -4,6 +4,7 @@ public class Building {
     protected String address;
     protected int nFloors;
     protected int activeFloor = -1; // Default value indicating we are not inside this building
+    protected boolean hasElevator;
 
     /* Default constructor */
     public Building() {
@@ -29,6 +30,10 @@ public class Building {
             throw new RuntimeException("Cannot construct a building with fewer than 1 floor.");
         }
         this.nFloors = nFloors;
+    }
+
+    public boolean hasElevator(){
+        return hasElevator;
     }
 
     /* Accessors */

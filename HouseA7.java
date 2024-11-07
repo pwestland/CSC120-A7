@@ -25,6 +25,10 @@ public class House extends Building {
     return this.hasDiningHall;
   }
 
+  public boolean hasElevator(){
+    return this.hasElevator;
+  }
+
   /* returns how many residents in the house */
 
   public int nResidents(){
@@ -57,6 +61,23 @@ public class House extends Building {
 
   public boolean isResident(String person){
     return this.residents.contains(person);
+  }
+
+  /* method to move between floors */
+
+  public void goToFloor(int floorNum){
+    if(this.hasElevator() == true){
+      super.goToFloor(floorNum);
+    }
+    else{
+      if(this.activeFloor == -1){
+        throw new RuntimeException("You cannot go to this floor from outside the building.");
+      }
+      if(floorNum < 1 || floorNum > this.nFloors){
+        throw new RuntimeException("That floor does not exist, choose a number within the building's range.");
+      }
+      throw new RuntimeException("This building does not have an elevator, you must use the stairs.");
+    }
   }
 
   public static void main(String[] args) {

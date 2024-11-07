@@ -6,6 +6,7 @@ public class Cafe extends Building {
     private int nSugarPackets; // The number of sugar packets remaining in inventory
     private int nCreams; // The number of "splashes" of cream remaining in inventory
     private int nCups; // The number of cups remaining in inventory
+    private boolean hasElevator;
 
     /* creates the cafe */
 
@@ -18,6 +19,10 @@ public class Cafe extends Building {
         System.out.println("You have built a cafe: ☕");
     }
     
+    public boolean hasElevator(){
+        return hasElevator;
+    }
+
     public void sellCoffee(int size, int nSugarPackets, int nCreams){
         if(size > this.nCoffeeOunces){
             System.out.println("You do not have enough coffee to complete this order.");
